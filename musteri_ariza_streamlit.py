@@ -30,9 +30,8 @@ st.markdown("- **Müşteri Ariza**: Müşteri Son ay Ariza Birakmis mi?")
 st.markdown("- **Altyapi**: Abonenin Altyapi Bilgisi(BAKIR,FTTC,FTTB,FTTH)")
 st.markdown("- **Santral Mesafe**:Abone Santral Mesafesi")
 st.markdown("- **Attenuation**:Hattaki Zayiflama Değeri")
-st.markdown("- **Noise Margin**:Hat Kalite Değeri")
-st.markdown("- **Hizmet Kalitesi**:Abonenin sözleşme hizinin karsilanma orani")
-st.markdown("- **Stability**: Hattin stabil olup olmadigini gösteren bilgi")
+st.markdown("- **Noise Margin**:   Hattın Kalite Değeri")
+st.markdown("- **Hizmet Kalitesi**:  Abonenin sözleşme hizinin karsilanma orani")
 
 # Pandasla veri setini okuma
 df=pd.read_table(r'C:\Users\185681\Desktop\code_with_ai\proje3\streamlit\musteri_ariza_classification_data.txt')
@@ -57,7 +56,7 @@ HIZMET_KALITESI = st.sidebar.number_input("Hizmet Kalite Değeri Giriniz", min_v
 # Pickle kütüphanesi kullanarak eğitilen modelin tekrardan kullanılması
 from joblib import load
 
-ros_model = load(r'C:\Users\185681\Desktop\code_with_ai\proje3\streamlit\svc_ros_model.pkl')
+ros_model = load(r'C:\Users\185681\Desktop\code_with_ai\proje3\streamlit\svc_adasyn.pkl')
 
 input_df = pd.DataFrame({
     'ALTYAPI': [ALTYAPI],
@@ -96,6 +95,7 @@ if st.sidebar.button("Submit"):
     st.table(results_df)
 else:
     st.markdown("Please click the *Submit Button*!")
+    
 
 
 
